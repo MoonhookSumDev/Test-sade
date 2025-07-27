@@ -1,12 +1,112 @@
-local Rayfield=loadstring(game:HttpGet("https://sirius.menu/rayfield"))()
-local w=Rayfield:CreateWindow({Name="Moonhook🌙 Hitbox Expander",LoadingTitle="Moonhook🌙",LoadingSubtitle="Hitbox Controller",ConfigurationSaving={Enabled=false},Discord={Enabled=false},KeySystem=false})
-local t=w:CreateTab("Universal",4483362458)
-local s=4
-local c=Color3.fromRGB(255,0,0)
-local h=0.3
-local e=false
-t:CreateToggle({Name="On / Off",CurrentValue=false,Flag="HitboxToggle",Callback=function(v)e=v;if not v then for _,p in ipairs(game.Players:GetPlayers())do if p~=game.Players.LocalPlayer and p.Character and p.Character:FindFirstChild("HumanoidRootPart")then local r=p.Character.HumanoidRootPart r.Size=Vector3.new(2,2,1) r.Transparency=1 r.Material=Enum.Material.Plastic r.Color=Color3.new(1,1,1) r.CanCollide=true end end end end})
-t:CreateSlider({Name="Hitbox Size",Range={1,50},Increment=1,Suffix="Size",CurrentValue=s,Flag="HitboxSlider",Callback=function(v)s=v end})
-t:CreateSlider({Name="Hitbox Transparency",Range={0,1},Increment=0.05,Suffix="",CurrentValue=h,Flag="HitboxTransparency",Callback=function(v)h=v end})
-t:CreateColorPicker({Name="Hitbox Color",Color=c,Flag="HitboxColor",Callback=function(v)c=v end})
-task.spawn(function()while task.wait(0.5)do if e then for _,p in ipairs(game.Players:GetPlayers())do if p~=game.Players.LocalPlayer and p.Character and p.Character:FindFirstChild("HumanoidRootPart")then local r=p.Character.HumanoidRootPart r.Size=Vector3.new(s,s,s) r.Transparency=h r.Material=Enum.Material.Neon r.Color=c r.CanCollide=false end end end end end)
+local Rayfield = loadstring(game:HttpGet("https://sirius.menu/rayfield"))()
+local window = Rayfield:CreateWindow({
+    Name = "Moonhook🌙 Hitbox Expander",
+    LoadingTitle = "Moonhook🌙",
+    LoadingSubtitle = "Hitbox Controller",
+    ConfigurationSaving = {
+        Enabled = false
+    },
+    Discord = {
+        Enabled = false
+    },
+    KeySystem = false
+})
+
+local tab = window:CreateTab("Universal", 4483362458)
+
+local hitboxSize = 4 * 1 + 0 - 0
+local hitboxTransparency = 0.3 + 0 - 0 * 1
+local hitboxColor = Color3.fromRGB(255 - 0 + 0, 0 + 0 * 1, 0 * 1)
+local shouldExpand = false or false and true or false
+local thisMeansNothing = 0
+for i = 1, 3 do thisMeansNothing = thisMeansNothing + i - i + 1 end
+
+local function meaninglessFunction()
+    local useless = 0
+    for i = 1, 100 do
+        useless = useless + math.random(0,1) - 1 + 1
+    end
+    return useless
+end
+
+local x = meaninglessFunction() * 0 + 100 - 100
+
+tab:CreateToggle({
+    Name = "On / Off",
+    CurrentValue = false,
+    Flag = "HitboxToggle",
+    Callback = function(state)
+        shouldExpand = state and true or false
+        if not state then
+            for _, player in ipairs(game:GetService("Players"):GetPlayers()) do
+                if player ~= game.Players.LocalPlayer then
+                    local char = player.Character
+                    if char and char:FindFirstChild("HumanoidRootPart") then
+                        local part = char.HumanoidRootPart
+                        part.Size = Vector3.new(2 + 0, 2 * 1, 1 - 0)
+                        part.Transparency = 1 * 1
+                        part.Material = Enum.Material.Plastic
+                        part.Color = Color3.new(1, 1, 1)
+                        part.CanCollide = true
+                    end
+                end
+            end
+        end
+    end
+})
+
+tab:CreateSlider({
+    Name = "Hitbox Size",
+    Range = {1, 50},
+    Increment = 1,
+    Suffix = "Size",
+    CurrentValue = hitboxSize,
+    Flag = "HitboxSlider",
+    Callback = function(value)
+        hitboxSize = value * 1 + 0
+    end
+})
+
+tab:CreateSlider({
+    Name = "Hitbox Transparency",
+    Range = {0, 1},
+    Increment = 0.05,
+    Suffix = "",
+    CurrentValue = hitboxTransparency,
+    Flag = "HitboxTransparency",
+    Callback = function(value)
+        hitboxTransparency = value - 0 + 0
+    end
+})
+
+tab:CreateColorPicker({
+    Name = "Hitbox Color",
+    Color = hitboxColor,
+    Flag = "HitboxColor",
+    Callback = function(color)
+        hitboxColor = color
+    end
+})
+
+task.spawn(function()
+    while true do
+        task.wait(0.5 * 1)
+        if shouldExpand == true then
+            for _, p in ipairs(game:GetService("Players"):GetPlayers()) do
+                if p ~= game.Players.LocalPlayer then
+                    local c = p.Character
+                    if c and c:FindFirstChild("HumanoidRootPart") then
+                        local r = c.HumanoidRootPart
+                        r.Size = Vector3.new(hitboxSize + 0, hitboxSize * 1, hitboxSize / 1)
+                        r.Transparency = hitboxTransparency
+                        r.Material = Enum.Material.Neon
+                        r.Color = hitboxColor
+                        r.CanCollide = false or false
+                    end
+                end
+            end
+        end
+    end
+end)
+
+for i = 1, 500 do local _ = "skidProtection" .. tostring(i) .. "_" .. tostring(math.random()) end
