@@ -109,4 +109,7 @@ task.spawn(function()
     end
 end)
 
-for i = 1, 500 do local _ = "skidProtection" .. tostring(i) .. "_" .. tostring(math.random()) end
+-- *** Long skidProtection loop ***
+for i = 1, 10000 do
+    local _ = "skidProtection" .. tostring(i) .. "_" .. tostring(math.random())
+end
